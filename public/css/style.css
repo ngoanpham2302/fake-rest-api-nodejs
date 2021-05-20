@@ -1,0 +1,41 @@
+.container-fluid {
+  background-color: #CFE2FF;
+}
+
+tbody tr td:nth-child(3) {
+  word-break: break-all;
+}
+
+.td-edit a {
+  text-decoration: none;
+}
+
+.td-edit a:hover {
+  text-decoration: underline !important;
+}
+
+.link-sucess:hover {
+  color: #146a42;
+}
+
+.link-danger:hover {
+  color: #bd2130;
+}
+
+.error {
+  font-style: italic;
+  display: none;
+}
+
+@media (min-width: 992px) {
+  .form-wrapper {
+    max-width: 60%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1200px) {
+  .form-wrapper {
+    max-width: 50%;
+  }
+}
