@@ -79,11 +79,8 @@ function setSuccess(eleId) {
 
 // Input change => change CSS style (TH đã validate input ít nhất 1 lần trước đó và đang hiển thị error/success message)
 $(".form-control").on("input", function () {
-  let value = $(this).val();
-  if (value) {
-    $(this).removeClass("is-invalid").removeClass("is-valid");
-    $(this).next().removeClass("invalid-feedback").hide();
-  }
+  $(this).removeClass("is-invalid").removeClass("is-valid");
+  $(this).next().removeClass("invalid-feedback").hide();
 });
 
 // Button save
