@@ -19,7 +19,8 @@ function validateInput() {
 
 // Validate name
 function validateName() {
-  if ($("#name").val().trim() === "") {
+  let nameValue = $("#name").val().trim();
+  if (nameValue === "") {
     setError("#name", "Họ tên không được để trống");
   } else {
     setSuccess("#name");
@@ -68,8 +69,7 @@ function setError(eleId, message) {
 
   $(eleId).addClass("is-invalid");
   $(eleId).next().addClass("invalid-feedback");
-  $(eleId).next().text(message);
-  $(eleId).next().show();
+  $(eleId).next().text(message).show();
 }
 
 // Set CSS success style
