@@ -10,7 +10,7 @@ function loadDoc() {
       renderAllUsers(users);
     }
   };
-  xhttp.open("GET", "http://localhost:3000/users", true);
+  xhttp.open("GET", "/users", true);
   xhttp.send();
 }
 
