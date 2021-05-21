@@ -1,10 +1,13 @@
+// Dùng DOM
 window.onload = loadDoc();
 
 function loadDoc() {
   var xhttp = new XMLHttpRequest();
   xhttp.onreadystatechange = function () {
     if (this.readyState == 4 && this.status == 200) {
-      renderAllUsers(this.responseText);
+      // Do this.responseText là 1 string
+      users = JSON.parse(this.responseText);
+      renderAllUsers(users);
     }
   };
   xhttp.open("GET", "http://localhost:3000/users", true);
@@ -46,6 +49,8 @@ function renderAllUsers(userArr) {
 
   document.querySelector("table tbody").innerHTML = tbodyContent;
 }
+
+// Dùng jquery
 
 // Render users info
 
