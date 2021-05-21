@@ -17,7 +17,9 @@ function renderAllUsers(userArr) {
 
   for (let i = 0; i < userArr.length; i++) {
     tbodyContent += `<tr>
-              <th scope="row">${userArr[i].name}</th>
+              <th scope="row">${userArr[i].firstName} ${
+      userArr[i].lastName
+    }</th>
               <td>${userArr[i].birthday || "Chưa có thông tin"}</td>
               <td>${userArr[i].email}</td>
               <td>${userArr[i].phone}</td>
