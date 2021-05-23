@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>Thêm mới học viên</title>
-    <link rel="shortcut icon" href="./img/page-icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../img/page-icon.png" type="image/x-icon" />
 
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
@@ -27,14 +27,29 @@
 
         <div class="form-wrapper mt-5">
           <div class="row mb-3">
-            <label for="name" class="col-sm-3 col-form-label"
-              >Họ tên <span class="text-danger">*</span></label
+            <label for="first-name" class="col-sm-3 col-form-label"
+              >Tên <span class="text-danger">*</span></label
             >
             <div class="col-sm-9">
               <input
                 type="text"
                 class="form-control"
-                id="name"
+                id="first-name"
+                autocomplete="nope"
+              />
+              <small class="error">Error message</small>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="last-name" class="col-sm-3 col-form-label"
+              >Họ <span class="text-danger">*</span></label
+            >
+            <div class="col-sm-9">
+              <input
+                type="text"
+                class="form-control"
+                id="last-name"
                 autocomplete="nope"
               />
               <small class="error">Error message</small>
@@ -91,7 +106,7 @@
               <span class="ms-1">Quay lại</span>
             </a>
 
-            <button class="btn btn-success ms-2 btn-save">
+            <button class="btn btn-success ms-2 btn-add-save">
               <i class="fas fa-save"></i>
               <span class="ms-1">Lưu</span>
             </button>
@@ -109,6 +124,36 @@
     ></script>
 
     <script src="../js/validateInput.js"></script>
-    <script src="../js/api.js"></script>
+
+    <script>
+      // Add new user
+      function addUserApi(user) {
+        $.ajax({
+          method: "POST",
+          url: "/users",
+          data: user,
+        }).done(function () {
+          window.location.href = "/";
+        });
+      }
+
+      // Button save - Add user
+      $(".btn-add-save").click(function () {
+        removeErrorStyle();
+        validateInput();
+
+        if (isValidInput) {
+          let newUser = {
+            firstName: $("#first-name").val(),
+            lastName: $("#last-name").val(),
+            birthday: $("#birthday").val(),
+            email: $("#email").val(),
+            phone: $("#phone").val(),
+          };
+
+          addUserApi(newUser);
+        }
+      });
+    </script>
   </body>
 </html>

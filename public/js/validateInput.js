@@ -6,7 +6,8 @@ function validateInput() {
   isValidInput = true;
 
   // Name
-  validateName();
+  validateName("#first-name", "Tên không được để trống");
+  validateName("#last-name", "Họ không được để trống");
 
   // Email
   validateEmail();
@@ -18,12 +19,12 @@ function validateInput() {
 }
 
 // Validate name
-function validateName() {
-  let nameValue = $("#name").val().trim();
+function validateName(eleId, message) {
+  let nameValue = $(eleId).val().trim();
   if (nameValue === "") {
-    setError("#name", "Họ tên không được để trống");
+    setError(eleId, message);
   } else {
-    setSuccess("#name");
+    setSuccess(eleId);
   }
 }
 
@@ -83,10 +84,9 @@ $(".form-control").on("input", function () {
   $(this).next().removeClass("invalid-feedback").hide();
 });
 
-// Button save
-$(".btn-save").click(function () {
+function removeErrorStyle() {
   $(".form-control").removeClass("is-invalid").removeClass("is-valid");
   $(".error").removeClass("invalid-feedback").hide();
+}
 
-  validateInput();
-});
+
