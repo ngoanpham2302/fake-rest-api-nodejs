@@ -124,5 +124,72 @@
     ></script>
 
     <script src="../js/validateInput.js"></script>
+
+    <script>
+      // Lấy thông tin user cần edit và render ra form
+
+      // Lấy user id
+      function getEditId() {
+        let urlQueryPart = window.location.search;
+        let urlParams = new URLSearchParams(urlQueryPart);
+        return urlParams.get("id");
+      }
+
+      let editId = getEditId();
+
+      // Ready function
+      $(function () {
+        getUserInfoApi(editId);
+      });
+
+      // Lấy thông tin user cần edit
+      function getUserInfoApi(id) {
+        $.ajax({
+          method: "GET",
+          url: "/users/" + id,
+        }).done(function (userEdit) {
+          renderUserInfo(userEdit);
+        });
+      }
+
+      function renderUserInfo(user) {
+        $("#first-name").val(user.firstName);
+        $("#last-name").val(user.lastName);
+        $("#birthday").val(user.birthday);
+        $("#email").val(user.email);
+        $("#phone").val(user.phone);
+      }
+
+      // Cập nhật thông tin mới cho user
+
+      function updateUserApi(user) {
+        $.ajax({
+          method: "PUT",
+          url: "/users/" + user.id,
+          data: user,
+        }).done(function () {
+          window.location.href = "/";
+        });
+      }
+
+      // Button save - update user
+      $(".btn-update-save").click(function () {
+        removeErrorStyle();
+        validateInput();
+
+        if (isValidInput) {
+          let updatedUser = {
+            id: editId,
+            firstName: $("#first-name").val(),
+            lastName: $("#last-name").val(),
+            birthday: $("#birthday").val(),
+            email: $("#email").val(),
+            phone: $("#phone").val(),
+          };
+
+          updateUserApi(updatedUser);
+        }
+      });
+    </script>
   </body>
 </html>

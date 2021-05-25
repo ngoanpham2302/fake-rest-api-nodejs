@@ -1,9 +1,9 @@
 // Ready function
 $(function () {
-  getAllUsers();
+  getAllUsersApi();
 });
 
-function getAllUsers() {
+function getAllUsersApi() {
   $.ajax({
     method: "GET",
     url: "/users",
@@ -17,14 +17,15 @@ function renderAllUsers(userArr) {
   let tbodyContent = "";
 
   for (let i = 0; i < userArr.length; i++) {
+    let user = userArr[i];
     tbodyContent += `<tr>
-            <th scope="row">${userArr[i].firstName} ${userArr[i].lastName}</th>
-              <td>${userArr[i].birthday || "Chưa có thông tin"}</td>
-              <td>${userArr[i].email}</td>
-              <td>${userArr[i].phone}</td>
+              <th scope="row">${user.firstName} ${user.lastName}</th>
+              <td>${user.birthday || "Chưa có thông tin"}</td>
+              <td>${user.email}</td>
+              <td>${user.phone}</td>
               <td class="text-center td-edit">
                 <a
-                  href="./html/edit.html"
+                  href="./html/edit.html?id=${user.id}"
                   class="btn-edit link-success text-decoration-none px-1"
                 >
                   <i class="fas fa-edit"></i>
@@ -33,11 +34,11 @@ function renderAllUsers(userArr) {
                 <a
                   href="#"
                   class="btn-remove-${
-                    userArr[i].id
+                    user.id
                   } link-danger text-decoration-none px-1"
                   data-bs-toggle="modal"
-                  data-bs-target="#removeModal"
-                  onclick="removeUser(${userArr[i].id})"
+                  data-bs-target="#removeUserModal"
+                  onclick="removeUser(${user.id})"
                 >
                   <i class="fas fa-trash-alt"></i>
                   <span>Xóa</span>
@@ -50,12 +51,12 @@ function renderAllUsers(userArr) {
 }
 
 // Remove user
-function removeUserApi(id, btnClass) {
+function removeUserApi(id, btnRemoveClass) {
   $.ajax({
     method: "DELETE",
     url: "/users/" + id,
   }).done(function () {
-    $(btnClass).parent().parent().remove();
+    $(btnRemoveClass).parent().parent().remove();
   });
 }
 
@@ -66,7 +67,7 @@ function removeUser(id) {
   userId = id;
 }
 
-// Confirm remove (modal)
+// Button confirm remove (modal)
 $(".btn-confirm").click(function () {
   removeUserApi(userId, `.btn-remove-${userId}`);
 });

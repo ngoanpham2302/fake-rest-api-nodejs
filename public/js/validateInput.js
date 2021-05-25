@@ -5,9 +5,17 @@ let isValidInput;
 function validateInput() {
   isValidInput = true;
 
-  // Name
-  validateName("#first-name", "Tên không được để trống");
-  validateName("#last-name", "Họ không được để trống");
+  // First name, Last name
+  validateName(
+    "#first-name",
+    "Tên không được để trống",
+    "Vui lòng nhập tên trong khoảng từ 2 đến 20 ký tự"
+  );
+  validateName(
+    "#last-name",
+    "Họ không được để trống",
+    "Vui lòng nhập họ trong khoảng từ 2 đến 20 ký tự"
+  );
 
   // Email
   validateEmail();
@@ -19,12 +27,17 @@ function validateInput() {
 }
 
 // Validate name
-function validateName(eleId, message) {
+function validateName(eleId, message1, message2) {
   let nameValue = $(eleId).val().trim();
+
   if (nameValue === "") {
-    setError(eleId, message);
+    setError(eleId, message1);
   } else {
-    setSuccess(eleId);
+    if (nameValue.length < 2 || nameValue.length > 20) {
+      setError(eleId, message2);
+    } else {
+      setSuccess(eleId);
+    }
   }
 }
 
@@ -47,7 +60,7 @@ function validateEmail() {
 
 // Validate phone
 function validatePhone() {
-  let phoneRegex = /^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
+  let phoneRegex = /^\(?([0-9]{3,5})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$/;
   let phoneValue = $("#phone").val().trim();
 
   if (phoneValue === "") {
@@ -88,5 +101,3 @@ function removeErrorStyle() {
   $(".form-control").removeClass("is-invalid").removeClass("is-valid");
   $(".error").removeClass("invalid-feedback").hide();
 }
-
-
