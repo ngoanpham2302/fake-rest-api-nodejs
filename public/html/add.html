@@ -125,35 +125,6 @@
 
     <script src="../js/validateInput.js"></script>
 
-    <script>
-      // Add new user
-      function addUserApi(user) {
-        $.ajax({
-          method: "POST",
-          url: "/users",
-          data: user,
-        }).done(function () {
-          window.location.href = "/";
-        });
-      }
-
-      // Button save - Add user
-      $(".btn-add-save").click(function () {
-        removeErrorStyle();
-        validateInput();
-
-        if (isValidInput) {
-          let newUser = {
-            firstName: $("#first-name").val(),
-            lastName: $("#last-name").val(),
-            birthday: $("#birthday").val(),
-            email: $("#email").val(),
-            phone: $("#phone").val(),
-          };
-
-          addUserApi(newUser);
-        }
-      });
-    </script>
+    <script src="../js/add.js"></script>
   </body>
 </html>

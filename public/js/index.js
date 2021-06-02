@@ -7,9 +7,16 @@ function getAllUsersApi() {
   $.ajax({
     method: "GET",
     url: "/users",
-  }).done(function (users) {
-    renderAllUsers(users);
-  });
+  })
+    .done(function (users) {
+      renderAllUsers(users);
+    })
+    .fail(function () {
+      renderAllUsers([]);
+      $(".table-responsive").append(
+        "<p class='text-center text-danger'>Không tìm thấy học viên!</p>"
+      );
+    });
 }
 
 // Render thông tin tất cả users ra bảng
@@ -55,9 +62,13 @@ function removeUserApi(id, btnRemoveClass) {
   $.ajax({
     method: "DELETE",
     url: "/users/" + id,
-  }).done(function () {
-    $(btnRemoveClass).parent().parent().remove();
-  });
+  })
+    .done(function () {
+      $(btnRemoveClass).parent().parent().remove();
+    })
+    .fail(function () {
+      alert("Lỗi! Không thể xóa học viên này!");
+    });
 }
 
 // Button remove user

@@ -1,5 +1,5 @@
 .container-fluid {
-  background-color: #ECECEC;
+  background-color: #ececec;
 }
 
 tbody tr td:nth-child(3) {
@@ -25,6 +25,57 @@ tbody tr td:nth-child(3) {
 .error {
   font-style: italic;
   display: none;
+}
+
+/* Login */
+
+.forms {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  color: #495057;
+}
+
+.nav-item {
+  flex: 1;
+  background-color: #f7f5f5;
+}
+
+.nav-tabs .nav-link {
+  width: 100%;
+  color: #495057;
+  text-transform: uppercase;
+}
+
+.nav-link:hover {
+  color: #222;
+}
+
+.nav-tabs .nav-link.active {
+  display: block;
+  color: #198754;
+}
+
+.login-container {
+  max-width: 450px;
+  border-radius: 5px;
+  box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+    rgba(60, 64, 67, 0.15) 0px 1px 3px 1px;
+}
+
+.forgot-password {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.forgot-password:hover {
+  color: #222;
+}
+
+.btn-login,
+.btn-signup,
+.btn-send-email {
+  letter-spacing: 0.05rem;
 }
 
 @media (min-width: 992px) {

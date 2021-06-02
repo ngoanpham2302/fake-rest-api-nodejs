@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Đăng nhập</title>
+    <link rel="shortcut icon" href="../img/page-icon.png" type="image/x-icon" />
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="../css/style.css" />
+  </head>
+  <body>
+    <div class="forms container">
+      <div class="login-container">
+        <ul class="nav nav-tabs" id="tabs" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link active"
+              id="login-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#login"
+              type="button"
+              role="tab"
+              aria-controls="login"
+              aria-selected="true"
+            >
+              Đăng nhập
+            </button>
+          </li>
+
+          <li class="nav-item" role="presentation">
+            <button
+              class="nav-link"
+              id="signup-tab"
+              data-bs-toggle="tab"
+              data-bs-target="#signup"
+              type="button"
+              role="tab"
+              aria-controls="signup"
+              aria-selected="false"
+            >
+              Đăng ký
+            </button>
+          </li>
+        </ul>
+
+        <!-- Tab Content -->
+
+        <div class="tab-content px-4 py-5" id="tabContent">
+          <div
+            class="tab-pane fade show active"
+            id="login"
+            role="tabpanel"
+            aria-labelledby="login-tab"
+          >
+            <form class="row needs-validation">
+              <div class="error-noti error mb-4 text-danger"></div>
+
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="login-email"
+                  placeholder="Email"
+                  autocomplete="email"
+                />
+                <small class="email-error error text-danger"
+                  >Error message</small
+                >
+              </div>
+
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="password"
+                  id="login-password"
+                  placeholder="Mật khẩu"
+                  autocomplete="current-password"
+                />
+                <small class="pass-error error text-danger"
+                  >Error message</small
+                >
+              </div>
+
+              <div
+                class="forgot-password mb-4 text-center"
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#forgotPassModal"
+              >
+                <i class="fas fa-question-circle"></i>
+                <span>Quên mật khẩu?</span>
+              </div>
+
+              <div class="col-12">
+                <button
+                  class="btn btn-success btn-login d-block w-100"
+                  type="button"
+                >
+                  ĐĂNG NHẬP
+                </button>
+              </div>
+            </form>
+          </div>
+
+          <div
+            class="tab-pane fade"
+            id="signup"
+            role="tabpanel"
+            aria-labelledby="signup-tab"
+          >
+            <form class="row needs-validation" novalidate>
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="signup-first-name"
+                  placeholder="Tên"
+                />
+                <small class="error">Error message</small>
+              </div>
+
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="signup-last-name"
+                  placeholder="Họ"
+                />
+                <small class="error">Error message</small>
+              </div>
+
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="signup-email"
+                  placeholder="Email"
+                  autocomplete="email"
+                />
+                <small class="error">Error message</small>
+              </div>
+
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="signup-phone"
+                  placeholder="Số điện thoại"
+                  autocomplete="phone"
+                />
+                <small class="error">Error message</small>
+              </div>
+
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="password"
+                  id="signup-password"
+                  placeholder="Mật khẩu"
+                  autocomplete="new-password"
+                />
+                <small class="error">Error message</small>
+              </div>
+
+              <div class="col-12">
+                <button
+                  class="btn btn-success btn-signup d-block w-100"
+                  type="button"
+                >
+                  ĐĂNG KÝ
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal Forgot Password -->
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="forgotPassModal"
+      tabindex="-1"
+      aria-labelledby="forgotPassModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="forgotPassModalLabel">
+              Quên mật khẩu?
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+
+          <div class="modal-body p-4">
+            <form>
+              <div class="form-input mb-4">
+                <input
+                  class="form-control"
+                  type="text"
+                  id="email"
+                  placeholder="Email"
+                  required
+                />
+                <small class="error">Error message</small>
+              </div>
+
+              <div class="col-12">
+                <button
+                  class="btn btn-success btn-send-email d-block w-100"
+                  type="button"
+                >
+                  GỬI EMAIL TRỢ GIÚP
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="../js/login.js"></script>
+
+    <!-- <script src="../js/add.js"></script> -->
+  </body>
+</html>
