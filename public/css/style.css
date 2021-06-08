@@ -2,9 +2,9 @@
   background-color: #ececec;
 }
 
-tbody tr td:nth-child(3) {
+/* tbody tr td:nth-child(3) {
   word-break: break-all;
-}
+} */
 
 .td-edit a {
   text-decoration: none;
@@ -26,6 +26,49 @@ tbody tr td:nth-child(3) {
   font-style: italic;
   display: none;
 }
+
+.page-link:focus {
+  box-shadow: none;
+}
+
+.disabled-btn {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+thead th {
+  position: relative;
+  cursor: pointer;
+}
+
+th .sort-icon {
+  position: absolute;
+  right: 0.5rem;
+}
+
+.sort-btn i {
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s linear;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+#search-input {
+  padding: 0.47rem 0.75rem;
+}
+
+thead th:hover > .sort-btn i {
+  color: rgba(255, 255, 255, 0.8);
+}
+
+/* thead th:hover > .fa-sort-up,
+thead th:hover > .fa-sort-down {
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.2s linear;
+} */
 
 /* Login */
 
@@ -76,6 +119,14 @@ tbody tr td:nth-child(3) {
 .btn-signup,
 .btn-send-email {
   letter-spacing: 0.05rem;
+}
+
+@media (max-width: 576px) {
+  .search-container {
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+  }
 }
 
 @media (min-width: 992px) {
