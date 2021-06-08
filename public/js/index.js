@@ -5,7 +5,7 @@ let searchValue = "";
 let searchQuery = "q=" + searchValue;
 let pageLimitUsers = 2;
 let maxPages = 5;
-let pageDiff;
+let pageDiff = 0;
 
 function getUsersFail() {
   renderAllUsers([]);
